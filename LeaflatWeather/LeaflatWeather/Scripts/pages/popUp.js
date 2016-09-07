@@ -1,4 +1,5 @@
-﻿/// <reference path="../jquery-1.10.2.js" />
+﻿/// <reference path="../jquery-ui.js" />
+/// <reference path="../jquery-1.10.2.js" />
 $(document).ready(function () {
     $('#mapContainer').click(function (e) {
         var offset = $(this).offset();
@@ -14,4 +15,7 @@ $(document).ready(function () {
         $('#regionInfoPopUp').hide();
     });
 
+    $('#regionInfoPopUp').draggable();
+    $('#regionInfoPopUp').resizable();
+    //$("#mapContainer").resizable();
 });
