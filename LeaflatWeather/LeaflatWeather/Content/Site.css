@@ -23,3 +23,41 @@ textarea {
 #mapContainer{
     margin-top:5%;
 }
+
+#regionInfoPopUp {
+    position:absolute;
+    display:none;
+    background:#fff;
+    border: 1px solid #999;
+    padding:10px;
+    width:auto;
+    box-shadow:0 0 10px rgba(0, 0, 0, .5);
+}
+#regionInfoPopUp:after, #regionInfoPopUp:before {
+    right: 100%;
+    border: solid transparent;
+    content:" ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+}
+#regionInfoPopUp:after {
+    border-color: rgba(255, 255, 255, 0);
+    border-right-color: #ffffff;
+    border-width: 10px;
+    top: 50%;
+    margin-top: -10px;
+}
+#regionInfoPopUp:before {
+    border-color: rgba(201, 201, 201, 0);
+    border-right-color: #c9c9c9;
+    border-width: 11px;
+    top: 50%;
+    margin-top: -11px;
+}
+
+#popOverHeader, #popOverHeader span{
+    height: 30px;
+}
+

@@ -6,21 +6,19 @@
 
     function wheatherController($scope, weatherService) {
 
-        //angular.extend($scope, {
-        //    defaults: {
-        //        scrollWheelZoom: true
-        //    }
-        //});
-
         $scope.weatherInfo = {};
+
         angular.extend($scope, {
             center: {
             },
             defaults: {
-                scrollWheelZoom: false
+                scrollWheelZoom: true
+            },
+            markers: {
+
             }
         });
-
+        
         var getCoords = function () {
             weatherService.getCurrentLocation()
             .success(function (coordinates) {
@@ -38,7 +36,6 @@
 
         function activate() {
             getCoords();
-            
         };
         activate();
 
@@ -46,7 +43,18 @@
             weatherService.getDataForLocation(wrap.leafletEvent.latlng.lat, wrap.leafletEvent.latlng.lng)
                 .then(function (response) {
                         $scope.weatherInfo = response.data;
-                    });
+                });
+            $scope.markers = {};
+            $scope.markers.newMarker = {
+                lat: wrap.leafletEvent.latlng.lat,
+                lng: wrap.leafletEvent.latlng.lng,
+                focus: true,
+                draggable: false
+            };
+        });
+        $scope.$on('leafletDirectiveMap.dragend', function (event) {
+            angular.element(document.querySelector("#regionInfoPopUp")).css("display", "none");
+            $scope.markers = {};
         });
     };
 })(angular);
