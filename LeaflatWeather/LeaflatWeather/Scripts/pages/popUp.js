@@ -12,7 +12,9 @@ $(document).ready(function () {
     });
 
     $("#popOverHeader span").click(function (e) {
-        $('#regionInfoPopUp').hide();
+        $('#regionInfoPopUp').effect("fold", 1000);
+        //$('#regionInfoPopUp').hide();
+        return false;
     });
 
     $('#regionInfoPopUp').draggable();
