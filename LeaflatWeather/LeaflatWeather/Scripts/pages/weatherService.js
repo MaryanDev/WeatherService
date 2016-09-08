@@ -7,7 +7,8 @@
     function weatherService($http) {
         var service = {
             getCurrentLocation: getCurrentLocationAjax,
-            getDataForLocation: getDataForLocationAjax
+            getDataForLocation: getDataForLocationAjax,
+            sendWeatherData: sendWeatherDataAjax
         };
 
         return service;
@@ -22,6 +23,11 @@
                 method: "GET",
                 url: "http://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lng + "&APPID=5b4bead23d3a1701edbbd31047338e68"
             });
+            return promise;
+        }
+
+        function sendWeatherDataAjax(weatherData) {
+            var promise = $http.post("Home/SaveWeatherData", weatherData);
             return promise;
         }
     };

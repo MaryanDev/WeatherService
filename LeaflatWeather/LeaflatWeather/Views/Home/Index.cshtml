@@ -61,7 +61,21 @@
                     Speed: {{weatherInfo.wind.speed}}m/s
                 </td>
             </tr>
+            <tr>
+                <td>
+
+                </td>
+                <td>
+                    <button ng-click="sendData()" class="btn btn-info">Send Data</button>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2"><span class="text-danger">{{errorMessage}}</span><span class="text-success">{{successMessage}}</span></td>
+            </tr>
         </table>
+        @*<div id="popOverFooter" class="text-right col-lg-10 col-md-10 col-sm-10 col-xs-10">
+            <button ng-click="sendData()" class="btn btn-info">Send Data</button>
+        </div>*@
     </div>
 </div>
 

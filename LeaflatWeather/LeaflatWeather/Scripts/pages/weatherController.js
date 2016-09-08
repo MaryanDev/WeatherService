@@ -56,11 +56,19 @@
                 draggable: false
             };
 
+            $scope.successMessage = "";
+            $scope.errorMessage = "";
+
             $scope.getSightsPoints(wrap.leafletEvent.latlng.lat, wrap.leafletEvent.latlng.lng).success(function (data) {
                 $scope.markerHelper(wrap.leafletEvent.latlng, data);
             })
         });
         $scope.$on('leafletDirectiveMap.dragend', function (event) {
+            angular.element(document.querySelector("#regionInfoPopUp")).css("display", "none");
+            $scope.markers = {};
+        });
+
+        $scope.$on('leafletDirectiveMap.zoomstart', function (event) {
             angular.element(document.querySelector("#regionInfoPopUp")).css("display", "none");
             $scope.markers = {};
         });
@@ -102,5 +110,27 @@
             //    console.log(response.data);
             //});
         });
+
+        $scope.sendData = function () {
+            var weatherData = {
+                Country: $scope.weatherInfo.sys.country,
+                Longitude: $scope.weatherInfo.coord.lon,
+                Lattitude: $scope.weatherInfo.coord.lat,
+                Description: $scope.weatherInfo.weather[0].description,
+                Humidity: $scope.weatherInfo.main.humidity,
+                Pressure: $scope.weatherInfo.main.pressure,
+                Temperature: $scope.weatherInfo.main.temp - 272,
+                WindSpeed: $scope.weatherInfo.wind.speed
+            };
+            console.log(JSON.stringify(weatherData));
+            weatherService.sendWeatherData(weatherData)
+                .then(function (response) {
+                    $scope.successMessage = "Data was succesfully sended";
+                    console.log(response);
+                }, function errorCallback(response) {
+                    $scope.errorMessage = "Some error has been occured";
+                    console.log(response);
+                });
+        }
     };
 })(angular);

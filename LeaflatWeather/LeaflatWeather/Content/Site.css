@@ -34,8 +34,8 @@ textarea {
     width:auto;
     box-shadow:0 0 10px rgba(0, 0, 0, .5);
     min-width:320px;
-    min-height:320px;
-    max-height:330px;
+    min-height:380px;
+    max-height:400px;
 }
 #regionInfoPopUp:after, #regionInfoPopUp:before {
     right: 100%;
@@ -63,5 +63,8 @@ textarea {
 
 #popOverHeader, #popOverHeader span{
     height: 30px;
+}
+
+#popOverFooter{
 }
 

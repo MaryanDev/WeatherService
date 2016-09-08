@@ -5,6 +5,10 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeaflatWeather", "LeaflatWeather\LeaflatWeather.csproj", "{26D9B5AC-8B2A-4B32-AD9D-E5FC99FF351E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LFW.Entities", "LFW.Entities\LFW.Entities.csproj", "{207E5B44-294F-4012-9B78-64E6C63C52AF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LFW.Repositories", "LFW.Repositories\LFW.Repositories.csproj", "{B1AE01E7-0FA2-4615-8DC5-4986D66DA488}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{26D9B5AC-8B2A-4B32-AD9D-E5FC99FF351E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{26D9B5AC-8B2A-4B32-AD9D-E5FC99FF351E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{26D9B5AC-8B2A-4B32-AD9D-E5FC99FF351E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{207E5B44-294F-4012-9B78-64E6C63C52AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{207E5B44-294F-4012-9B78-64E6C63C52AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{207E5B44-294F-4012-9B78-64E6C63C52AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{207E5B44-294F-4012-9B78-64E6C63C52AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1AE01E7-0FA2-4615-8DC5-4986D66DA488}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1AE01E7-0FA2-4615-8DC5-4986D66DA488}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1AE01E7-0FA2-4615-8DC5-4986D66DA488}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1AE01E7-0FA2-4615-8DC5-4986D66DA488}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
