@@ -1,7 +1,7 @@
 ﻿/// <reference path="../jquery-ui.js" />
 /// <reference path="../jquery-1.10.2.js" />
 $(document).ready(function () {
-    $('#mapContainer').click(function (e) {
+    $('#mapContainer').contextmenu(function (e) {
         var offset = $(this).offset();
         var left = e.pageX;
         var top = e.pageY;
