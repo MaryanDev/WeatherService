@@ -28,12 +28,12 @@
         }
 
         function sendWeatherDataAjax(weatherData) {
-            var promise = $http.post("Home/SaveWeatherData", weatherData);
+            var promise = $http.post("SaveWeatherData", weatherData);
             return promise;
         }
 
         function getSightsPointsAjax(lat, lng) {
-            var promise = $http.jsonp('https://en.wikipedia.org/w/api.php?action=query&list=geosearch&gsradius=10000&gscoord=' + lat + '%7C' + lng + '&gslimit=30&format=json&callback=JSON_CALLBACK')
+            var promise = $http.jsonp('https://en.wikipedia.org/w/api.php?action=query&list=geosearch&gsradius=10000&gscoord=' + lat + '%7C' + lng + '&gslimit=30&format=json&callback=JSON_CALLBACK');
 
             return promise;
         }

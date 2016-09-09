@@ -8,20 +8,23 @@
     <div class="row">
         <div class="panel col-lg-4 col-md-4"></div>
         <div class="col-lg-8 col-md-8 text-center" id="sortable">
-            <div id="locationContainer" ng-repeat="location in allLocations" class="panel panel-body ui-state-default">
+            <div id="locationContainer" ng-repeat="location in allLocations" class="panel panel-body ui-state-default" ng-dblclick="getMap(location.Lattitude, location.Longitude)">
                 <h3 class="text-info">{{location.Country + " " + location.Time}}</h3>
-                <ul class="list-unstyled">
-                    <li class="list-group-item">Description: {{location.Description}}</li>
-                    <li class="list-group-item">Humidity: {{location.Humidity}}</li>
-                    <li class="list-group-item">Lattitude: {{location.Lattitude}}</li>
-                    <li class="list-group-item">Longitude: {{location.Longitude}}</li>
-                    <li class="list-group-item">Pressure: {{location.Pressure}}</li>
-                    <li class="list-group-item">Temperature: {{location.Temperature}}</li>
-                    <li class="list-group-item">Wind speed: {{location.WindSpeed}}</li>
-                </ul>
+                <div>
+                    <ul class="list-unstyled">
+                        <li class="list-group-item">Description: {{location.Description}}</li>
+                        <li class="list-group-item">Humidity: {{location.Humidity}}</li>
+                        <li class="list-group-item">Lattitude: {{location.Lattitude}}</li>
+                        <li class="list-group-item">Longitude: {{location.Longitude}}</li>
+                        <li class="list-group-item">Pressure: {{location.Pressure}}</li>
+                        <li class="list-group-item">Temperature: {{location.Temperature}}</li>
+                        <li class="list-group-item">Wind speed: {{location.WindSpeed}}</li>
+                    </ul>
+                </div>
             </div>
-            <ul class="pagination"><li ng-repeat="n in [] | range:allPages"><a href="#" ng-click="getPage($index + 1)">{{$index + 1}}</a></li></ul>
+
         </div>
+        <ul class="pagination"><li ng-repeat="n in [] | range:allPages"><a href="#" ng-click="getPage($index + 1)">{{$index + 1}}</a></li></ul>
     </div>
 </div>
 

@@ -41,7 +41,27 @@
         };
 
         function activate() {
-            getCoords();
+            if (localStorage.getItem("lat") && localStorage.getItem("lng")) {
+                $scope.center.lat = +localStorage.getItem("lat");
+                $scope.center.lng = +localStorage.getItem("lng");
+                $scope.center.zoom = 16;
+
+                weatherService.getDataForLocation($scope.center.lat, $scope.center.lng)
+                .then(function (response) {
+                    $scope.weatherInfo = response.data;
+                });
+
+                weatherService.getSightsPoints($scope.center.lat, $scope.center.lng).success(function (data) {
+                    $scope.markerHelper($scope.center, data);
+                })
+
+                localStorage.removeItem("lat");
+                localStorage.removeItem("lng");
+            }
+            else {
+                getCoords();
+            }
+            
         };
         activate();
 
@@ -82,7 +102,7 @@
             var currentPositionPoint = {
                 lat: coordinates.lat,
                 lng: coordinates.lng,
-                city: coordinates.city,
+                //city: coordinates.city,
                 focus: true,
                 //message: 'Your approximate location in ' + coordinates.city + ' is lat: ' + coordinates.lat + ' and lon: ' + coordinates.lng + '. You can also see some of the sights within a radius of 10 kilometers.',
                 icon: {

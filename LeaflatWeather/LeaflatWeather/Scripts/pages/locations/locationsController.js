@@ -31,5 +31,11 @@
                                 console.log(response.statusText);
                             });
         };
+
+        $scope.getMap = function (lat, lng) {
+            localStorage.setItem("lat", lat);
+            localStorage.setItem("lng", lng);
+            location.assign("/Home/Index");
+        };
     }
 })(angular);
