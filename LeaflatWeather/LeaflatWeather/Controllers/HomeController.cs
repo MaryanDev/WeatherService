@@ -57,5 +57,13 @@ namespace LeaflatWeather.Controllers
 
             return Json(new { locations = locations, allPages = count }, JsonRequestBehavior.AllowGet);
         }
+
+        [HttpGet]
+        public JsonResult GetCountries()
+        {
+            var countries = _weatherRepo.GetCountriesList();
+
+            return Json(countries, JsonRequestBehavior.AllowGet);
+        }
     }
 }

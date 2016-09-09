@@ -7,6 +7,7 @@
 
     function locationsController($scope, locationsService) {
         $scope.allLocations = [];
+        $scope.countries = [];
 
         function activate() {
             locationsService.getAllLocations()
@@ -16,7 +17,16 @@
                     $scope.allLocations = response.data.locations;
                 },
                 function errorCallback(error) {
-                    console.log(error);
+                    console.log(error.status);
+                });
+
+            locationsService.getCountries()
+                .then(function (response) {
+                    $scope.countries = response.data;
+                    console.log(response.data);
+                },
+                function errorCalback(error) {
+                    console.log(error.status)
                 });
         };
 

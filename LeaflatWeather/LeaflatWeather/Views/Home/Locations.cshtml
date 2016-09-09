@@ -6,7 +6,19 @@
 
 <div ng-controller="locationsController" class="container" id="mainLocContainer">
     <div class="row">
-        <div class="panel col-lg-4 col-md-4"></div>
+        <div class="panel col-lg-4 col-md-4" id="inputPanel">
+            <form class="input-group">
+                <div class="form-group">
+                    <label>
+                        <select id="cauntries" class="form-control input-lg">
+                            <option ng-repeat="country in countries">
+                                {{country}}
+                            </option>
+                        </select>
+                    </label>
+                </div>
+            </form>
+        </div>
         <div class="col-lg-8 col-md-8 text-center" id="sortable">
             <div id="locationContainer" ng-repeat="location in allLocations" class="panel panel-body ui-state-default" ng-dblclick="getMap(location.Lattitude, location.Longitude)">
                 <h3 class="text-info">{{location.Country + " " + location.Time}}</h3>
@@ -22,7 +34,6 @@
                     </ul>
                 </div>
             </div>
-
         </div>
         <ul class="pagination"><li ng-repeat="n in [] | range:allPages"><a href="#" ng-click="getPage($index + 1)">{{$index + 1}}</a></li></ul>
     </div>

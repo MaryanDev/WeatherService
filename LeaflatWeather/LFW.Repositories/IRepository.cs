@@ -15,5 +15,6 @@ namespace LFW.Repositories
         void Delete(Func<WeatherInfo, bool> criteria);
         bool Exists(Func<WeatherInfo, bool> criteria = null);
         WeatherInfo Update(WeatherInfo entity);
+        IEnumerable<string> GetCountriesList();
     }
 }

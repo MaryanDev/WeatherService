@@ -7,7 +7,8 @@
 
     function locationsService($http) {
         var service = {
-            getAllLocations: getAllLocationsAjax
+            getAllLocations: getAllLocationsAjax,
+            getCountries: getCountriesAjax
         }
 
         return service;
@@ -19,6 +20,15 @@
                 params: {
                     currentPage: page
                 }
+            });
+
+            return promise;
+        }
+
+        function getCountriesAjax() {
+            var promise = $http({
+                method: "GET",
+                url: "GetCountries"
             });
 
             return promise;

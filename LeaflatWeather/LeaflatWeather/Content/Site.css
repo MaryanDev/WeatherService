@@ -81,6 +81,9 @@ table td span{
     border-radius: 20px;
     margin-top: 30px;
 }
+#inputPanel{
+    margin-top: 30%;
+}
 
 #locationContainer ul li{
     background-color: lightskyblue;

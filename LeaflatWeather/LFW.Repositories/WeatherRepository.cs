@@ -66,5 +66,14 @@ namespace LFW.Repositories
                 return result;
             }
         }
+
+        public IEnumerable<string> GetCountriesList()
+        {
+            using(var context = new LeafletWeatherModel())
+            {
+                var result = context.Weather.Select(w => w.Country).Distinct().ToList();
+                return result;
+            }
+        }
     }
 }
