@@ -2,11 +2,13 @@
     angular.module("weatherModule")
         .controller("weatherController", wheatherController);
 
-    wheatherController.$inject = ["$scope", "weatherService", "$http"];
+    wheatherController.$inject = ["$scope", "weatherService"];
 
-    function wheatherController($scope, weatherService, $http) {
+    function wheatherController($scope, weatherService) {
 
         $scope.weatherInfo = {};
+        $scope.isLoading = false;
+        $scope.isSended = false;
 
         angular.extend($scope, {
             center: {
@@ -31,7 +33,7 @@
                     $scope.weatherInfo = response.data;
                 });
 
-                $scope.getSightsPoints(coordinates.lat, coordinates.lon).success(function (data) {
+                weatherService.getSightsPoints(coordinates.lat, coordinates.lon).success(function (data) {
                     $scope.markerHelper(coordinates, data);
                 })
             });
@@ -44,6 +46,7 @@
         activate();
 
         $scope.$on('leafletDirectiveMap.contextmenu', function (event, wrap) {
+            $scope.isSended = false;
             weatherService.getDataForLocation(wrap.leafletEvent.latlng.lat, wrap.leafletEvent.latlng.lng)
                 .then(function (response) {
                     $scope.weatherInfo = response.data;
@@ -59,9 +62,10 @@
             $scope.successMessage = "";
             $scope.errorMessage = "";
 
-            $scope.getSightsPoints(wrap.leafletEvent.latlng.lat, wrap.leafletEvent.latlng.lng).success(function (data) {
-                $scope.markerHelper(wrap.leafletEvent.latlng, data);
-            })
+            weatherService.getSightsPoints(wrap.leafletEvent.latlng.lat, wrap.leafletEvent.latlng.lng)
+                .success(function (data) {
+                    $scope.markerHelper(wrap.leafletEvent.latlng, data);
+                });
         });
         $scope.$on('leafletDirectiveMap.dragend', function (event) {
             angular.element(document.querySelector("#regionInfoPopUp")).css("display", "none");
@@ -72,14 +76,6 @@
             angular.element(document.querySelector("#regionInfoPopUp")).css("display", "none");
             $scope.markers = {};
         });
-
-        $scope.getSightsPoints = function (lat, lng) {
-            var promise = $http.jsonp('https://en.wikipedia.org/w/api.php?action=query&list=geosearch&gsradius=10000&gscoord=' + lat + '%7C' + lng + '&gslimit=30&format=json&callback=JSON_CALLBACK')
-            //.success(function (data) {
-            //    return data;
-            //})
-            return promise;
-        };
 
         $scope.markerHelper = function (coordinates, data) {
             $scope.geodata = data;
@@ -112,6 +108,8 @@
         });
 
         $scope.sendData = function () {
+            $scope.isLoading = true;
+            $scope.isSended = true;
             var weatherData = {
                 Country: $scope.weatherInfo.sys.country,
                 Longitude: $scope.weatherInfo.coord.lon,
@@ -127,9 +125,12 @@
                 .then(function (response) {
                     $scope.successMessage = "Data was succesfully sended";
                     console.log(response);
+                    $scope.isLoading = false;
                 }, function errorCallback(response) {
                     $scope.errorMessage = "Some error has been occured";
                     console.log(response);
+                    $scope.isloading = false;
+                    $scope.isSended = false;
                 });
         }
     };

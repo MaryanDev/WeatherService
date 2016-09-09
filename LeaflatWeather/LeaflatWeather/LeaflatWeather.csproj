@@ -114,11 +114,15 @@
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\jquery-ui.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Scripts\pages\geoHelper.js" />
-    <Content Include="Scripts\pages\popUp.js" />
+    <Content Include="Scripts\pages\locations\locationsController.js" />
+    <Content Include="Scripts\pages\locations\locationsService.js" />
+    <Content Include="Scripts\pages\locations\rangeFilter.js" />
+    <Content Include="Scripts\pages\locations\sortable.js" />
+    <Content Include="Scripts\pages\mainMap\geoHelper.js" />
+    <Content Include="Scripts\pages\mainMap\popUp.js" />
     <Content Include="Scripts\pages\weatherModule.js" />
-    <Content Include="Scripts\pages\weatherController.js" />
-    <Content Include="Scripts\pages\weatherService.js" />
+    <Content Include="Scripts\pages\mainMap\weatherController.js" />
+    <Content Include="Scripts\pages\mainMap\weatherService.js" />
     <None Include="Scripts\_references.js" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -141,6 +145,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Home\Locations.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

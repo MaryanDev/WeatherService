@@ -28,10 +28,10 @@ namespace LFW.Repositories
         }
 
         public IEnumerable<WeatherInfo> Get(Func<WeatherInfo, bool> criteria = null)
-        {
+        { 
             using(var context = new LeafletWeatherModel())
             {
-                var result = context.Weather.Where(criteria).ToList();
+                var result = criteria != null ? context.Weather.Where(criteria).ToList() : context.Weather.ToList();
                 return result;
             }
         }
@@ -40,7 +40,7 @@ namespace LFW.Repositories
         {
             using(var context = new LeafletWeatherModel())
             {
-                var result = context.Weather.Where(criteria).FirstOrDefault();
+                var result = criteria != null ? context.Weather.Where(criteria).FirstOrDefault() : context.Weather.FirstOrDefault();
                 return result;
             }
         }

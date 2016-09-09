@@ -2,7 +2,16 @@
 @{
     ViewBag.Title = "Index";
 }
-
+@section HeadStyles{
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css">
+}
+@section HeadScripts{
+    <script type="text/javascript"
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVQPrSknU_vps4GroJ4eWwvzCBBRJDNzs&libraries=geometry">
+    </script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+}
 <div ng-controller="weatherController" class="container text-center">
     <div id="mapContainer">
         <leaflet style="width:100%;height:100%;" center="center" markers="mapMarkers"></leaflet>
@@ -62,20 +71,29 @@
                 </td>
             </tr>
             <tr>
+                <td></td>
                 <td>
-
-                </td>
-                <td>
-                    <button ng-click="sendData()" class="btn btn-info">Send Data</button>
+                    <button ng-click="sendData()" class="btn btn-info" ng-disabled="isSended">Send Data</button>
                 </td>
             </tr>
             <tr>
-                <td colspan="2"><span class="text-danger">{{errorMessage}}</span><span class="text-success">{{successMessage}}</span></td>
+                <td>
+                    <div class="cssload-container" ng-if="isLoading">
+                        <div class="cssload-tube-tunnel"></div>
+                    </div>
+                </td>
+                <td><span class="text-danger">{{errorMessage}}</span><span class="text-success">{{successMessage}}</span></td>
             </tr>
         </table>
         @*<div id="popOverFooter" class="text-right col-lg-10 col-md-10 col-sm-10 col-xs-10">
-            <button ng-click="sendData()" class="btn btn-info">Send Data</button>
-        </div>*@
+                <button ng-click="sendData()" class="btn btn-info">Send Data</button>
+            </div>*@
     </div>
+    @section FootScripts{
+        <script src="~/Scripts/pages/mainMap/geoHelper.js"></script>
+        <script src="~/Scripts/pages/mainMap/weatherService.js"></script>
+        <script src="~/Scripts/pages/mainMap/popUp.js"></script>
+        <script src="~/Scripts/pages/mainMap/weatherController.js"></script>
+    }
 </div>
 

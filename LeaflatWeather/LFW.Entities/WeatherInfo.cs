@@ -28,5 +28,7 @@ namespace LFW.Entities
 
         public double WindSpeed { get; set; }
 
+        public string Time { get; set; }
+
     }
 }
