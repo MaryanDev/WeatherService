@@ -2,9 +2,9 @@
     angular.module("weatherModule")
         .factory("weatherService", weatherService);
 
-    weatherService.$inject = ["$http"];
+    weatherService.$inject = ["$http", "$q", "$window"];
 
-    function weatherService($http) {
+    function weatherService($http, $q, $window) {
         var service = {
             getCurrentLocation: getCurrentLocationAjax,
             getDataForLocation: getDataForLocationAjax,
@@ -15,8 +15,21 @@
         return service;
 
         function getCurrentLocationAjax() {
-            var promise = $http.get('http://ip-api.com/json');
-            return promise;
+            //var promise = $http.get('http://ip-api.com/json');
+            //return promise;
+            var deferred = $q.defer();
+
+            if (!$window.navigator.geolocation) {
+                deferred.reject('Geolocation not supported.');
+            } else {
+                $window.navigator.geolocation.getCurrentPosition(function (position) {
+                        deferred.resolve(position);
+                    },function (err) {
+                        deferred.reject(err);
+                    });
+            }
+
+            return deferred.promise;
         };
 
         function getDataForLocationAjax(lat, lng) {

@@ -3,6 +3,9 @@
     ViewBag.Title = "AllLocations";
 }
 
+@section HeadScripts{
+    <script src="~/Scripts/pages/locations/sortable.js"></script>
+}
 
 <div ng-controller="locationsController" class="container" id="mainLocContainer">
     <div class="row">
@@ -43,5 +46,4 @@
     <script src="~/Scripts/pages/locations/rangeFilter.js"></script>
     <script src="~/Scripts/pages/locations/locationsService.js"></script>
     <script src="~/Scripts/pages/locations/locationsController.js"></script>
-    <script src="~/Scripts/pages/locations/sortable.js"></script>
 }

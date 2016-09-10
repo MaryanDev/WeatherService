@@ -23,20 +23,23 @@
 
         var getCoords = function () {
             weatherService.getCurrentLocation()
-            .success(function (coordinates) {
-                $scope.center.lat = coordinates.lat;
-                $scope.center.lng = coordinates.lon;
-                $scope.center.zoom = 16;
-
-                weatherService.getDataForLocation(coordinates.lat, coordinates.lon)
                 .then(function (response) {
-                    $scope.weatherInfo = response.data;
-                });
+                    console.log(response);
+                    $scope.center.lat = response.coords.latitude;
+                    $scope.center.lng = response.coords.longitude;
+                    $scope.center.zoom = 16;
 
-                weatherService.getSightsPoints(coordinates.lat, coordinates.lon).success(function (data) {
-                    $scope.markerHelper(coordinates, data);
+                    weatherService.getDataForLocation($scope.center.lat, $scope.center.lng)
+                        .then(function (response) {
+                            $scope.weatherInfo = response.data;
+                        });
+
+                    weatherService.getSightsPoints($scope.center.lat, $scope.center.lng)
+                        .success(function (data) {
+                            console.log(data);
+                            $scope.markerHelper($scope.center, data);
+                        });
                 })
-            });
 
         };
 
@@ -61,7 +64,7 @@
             else {
                 getCoords();
             }
-            
+
         };
         activate();
 
