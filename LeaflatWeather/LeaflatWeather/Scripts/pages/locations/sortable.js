@@ -1,5 +1,5 @@
 ﻿$(document).ready(function () {
     $("#sortable").sortable();
     $("#sortable").disableSelection();
-    $("#sortable").accordion();
+    //$("#sortable").accordion();
 });

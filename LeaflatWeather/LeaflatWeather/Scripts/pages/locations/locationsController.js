@@ -8,6 +8,8 @@
     function locationsController($scope, locationsService) {
         $scope.allLocations = [];
         $scope.countries = [];
+        $scope.currentPage = 1;
+        $scope.currentCountry = "All";
 
         function activate() {
             locationsService.getAllLocations()
@@ -15,6 +17,7 @@
                     console.log(response.data);
                     $scope.allPages = response.data.allPages;
                     $scope.allLocations = response.data.locations;
+                    $scope.currentPage = response.data.currentPage;
                 },
                 function errorCallback(error) {
                     console.log(error.status);
@@ -32,8 +35,8 @@
 
         activate();
 
-        $scope.getPage = function (page) {
-            locationsService.getAllLocations(page)
+        $scope.getPage = function (page, country) {
+            locationsService.getAllLocations(page, country)
                             .then(function (response) {
                                 $scope.allPages = response.data.allPages;
                                 $scope.allLocations = response.data.locations;

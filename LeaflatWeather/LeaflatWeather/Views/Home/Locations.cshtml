@@ -13,12 +13,15 @@
             <form class="input-group">
                 <div class="form-group">
                     <label>
-                        <select id="cauntries" class="form-control input-lg">
+                        <select id="cauntries" class="form-control input-lg" ng-model="currentCountry">
                             <option ng-repeat="country in countries">
                                 {{country}}
                             </option>
                         </select>
                     </label>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-default btn-lg" ng-click="getPage(null, currentCountry)">Search</button>
                 </div>
             </form>
         </div>
@@ -37,8 +40,8 @@
                     </ul>
                 </div>
             </div>
+            <ul class="pagination"><li ng-repeat="n in [] | range:allPages"><a href="#" ng-click="getPage($index + 1)">{{$index + 1}}</a></li></ul>
         </div>
-        <ul class="pagination"><li ng-repeat="n in [] | range:allPages"><a href="#" ng-click="getPage($index + 1)">{{$index + 1}}</a></li></ul>
     </div>
 </div>
 

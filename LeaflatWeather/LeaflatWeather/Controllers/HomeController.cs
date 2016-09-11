@@ -47,15 +47,16 @@ namespace LeaflatWeather.Controllers
             return null;
         }
         [HttpGet]
-        public JsonResult GetLocations(int currentPage = 1)
+        public JsonResult GetLocations(int currentPage = 1, string country = "All")
         {
-            var locations = _weatherRepo.Get();
+            country = country.Trim();
+            var locations = country == "All" ? _weatherRepo.Get() : _weatherRepo.Get(c => c.Country.Equals(country));
 
             int pages = locations.Count() / PageSize;
             int count = locations.Count() % PageSize == 0 ? pages : ++pages;
             locations = locations.Skip((currentPage - 1) * PageSize).Take(PageSize).ToList();
 
-            return Json(new { locations = locations, allPages = count }, JsonRequestBehavior.AllowGet);
+            return Json(new { locations = locations, allPages = count, currentPage = currentPage }, JsonRequestBehavior.AllowGet);
         }
 
         [HttpGet]

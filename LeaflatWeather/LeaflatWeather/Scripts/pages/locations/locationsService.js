@@ -13,12 +13,13 @@
 
         return service;
 
-        function getAllLocationsAjax(page) {
+        function getAllLocationsAjax(page, country) {
             var promise = $http({
                 method: "GET",
                 url: "GetLocations",
                 params: {
-                    currentPage: page
+                    currentPage: page,
+                    country: country
                 }
             });
 
