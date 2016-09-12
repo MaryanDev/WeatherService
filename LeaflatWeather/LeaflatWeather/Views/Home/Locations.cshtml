@@ -48,7 +48,7 @@
             <ul class="pagination"><li ng-repeat="n in [] | range:allPages"><a href="#" ng-click="getPage($index + 1)">{{$index + 1}}</a></li></ul>
         </div>
     </div>
-    <div id="mapPopOver" ng-show="isMapVisible">
+    <div id="mapPopOver" ng-show="isMapVisible" ng-mouseenter="zoomInMap()" ng-mouseleave="zoomOffMap()">
         <leaflet center="mapCenter" markers="markers" style="width: 100%;height:100%;"></leaflet>
     </div>
 </div>

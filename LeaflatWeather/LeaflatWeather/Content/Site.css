@@ -75,7 +75,7 @@ textarea {
     height: 270px;
 }
 #mapPopOver:after, #mapPopOver:before {
-    right: 100%;
+    /*right: 100%;*/
     border: solid transparent;
     content:" ";
     height: 0;

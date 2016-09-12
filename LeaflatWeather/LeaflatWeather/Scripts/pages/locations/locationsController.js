@@ -85,5 +85,15 @@
         $scope.hideMap = function () {
             
         };
+
+        $scope.zoomInMap = function () {
+            angular.element(document.querySelector("#mapPopOver")).css({ "width": "400px", "height": "400px" });
+            angular.element(document.querySelector("leaflet")).css({ "width": "400px", "height": "400px" });
+        };
+
+        $scope.zoomOffMap = function () {
+            angular.element(document.querySelector("#mapPopOver")).css({ "width": "270px", "height": "270px" });
+            angular.element(document.querySelector("leaflet")).css({ "width": "270px", "height": "270px" });
+        };
     }
 })(angular);
