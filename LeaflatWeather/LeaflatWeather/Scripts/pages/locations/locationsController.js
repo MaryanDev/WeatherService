@@ -10,6 +10,14 @@
         $scope.countries = [];
         $scope.currentPage = 1;
         $scope.currentCountry = "All";
+        angular.extend($scope, {
+            mapCenter: {},
+            defaults: {
+                scrollWheelZoom: true
+            },
+            markers: []
+        });
+        $scope.isMapVisible = false;
 
         function activate() {
             locationsService.getAllLocations()
@@ -49,6 +57,33 @@
             localStorage.setItem("lat", lat);
             localStorage.setItem("lng", lng);
             location.assign("/Home/Index");
+        };
+
+        $scope.showMap = function ($event, location) {
+            //console.log($event);
+            //console.log(angular.element(document.querySelector("#locationContainer .row div span")));
+            var options = angular.element(document.querySelector("#locationContainer .row div span"));
+            angular.element(document.querySelector("#mapPopOver")).css({ "left": $event.pageX + "px", "top": $event.pageY + "px" });
+            $scope.mapCenter.lat = location.Lattitude;
+            $scope.mapCenter.lng = location.Longitude;
+            $scope.mapCenter.zoom = 16;
+            $scope.markers.push({
+                lat: location.Lattitude,
+                lng: location.Longitude,
+                focus: true,
+
+                icon: {
+                    type: 'awesomeMarker',
+                    icon: 'user',
+                    markerColor: 'blue',
+                    iconColor: 'white'
+                }
+            });
+            $scope.isMapVisible = $scope.isMapVisible === false ? true : false;
+        };
+
+        $scope.hideMap = function () {
+            
         };
     }
 })(angular);

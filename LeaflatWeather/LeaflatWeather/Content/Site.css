@@ -25,6 +25,7 @@ textarea {
     height:700px;
 }
 
+/*Popovers*/
 #regionInfoPopUp {
     position:absolute;
     display:none;
@@ -61,12 +62,50 @@ textarea {
     margin-top: -11px;
 }
 
+/*MapPopOver*/
+
+#mapPopOver {
+    position:absolute;
+    /*display:none;*/
+    background:#fff;
+    border: 1px solid #999;
+    padding:10px;
+    box-shadow:0 0 10px rgba(0, 0, 0, .5);
+    width: 270px;
+    height: 270px;
+}
+#mapPopOver:after, #mapPopOver:before {
+    right: 100%;
+    border: solid transparent;
+    content:" ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+}
+#mapPopOver:after {
+    border-color: rgba(255, 255, 255, 0);
+    border-right-color: #ffffff;
+    border-width: 10px;
+    top: 50%;
+    /*margin-top: -10px;*/
+}
+#mapPopOver:before {
+    border-color: rgba(201, 201, 201, 0);
+    border-right-color: #c9c9c9;
+    border-width: 11px;
+    top: 50%;
+    /*margin-top: -11px;*/
+}
+
 #popOverHeader, #popOverHeader span{
     height: 30px;
 }
 
 #popOverFooter{
 }
+/*end popovers*/
+
 
 table td span{
     margin-top:20px;
@@ -90,6 +129,21 @@ table td span{
     color:white;
     font-size: 10pt;
 }
+
+#locationContainer span{
+    margin-top: 20px;
+    font-size: 2em;
+    margin: auto;
+}
+
+#locationContainer .row div :hover{
+    background-color: azure;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+}
+
+
 
 /*Animation*/
 
