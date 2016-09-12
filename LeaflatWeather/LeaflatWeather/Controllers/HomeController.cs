@@ -28,7 +28,7 @@ namespace LeaflatWeather.Controllers
             return View();
         }
 
-        [HttpPost]
+        //[HttpPost]
         public ActionResult SaveWeatherData(WeatherModel weatherData)
         {
             _weatherRepo.Insert(new LFW.Entities.WeatherInfo
