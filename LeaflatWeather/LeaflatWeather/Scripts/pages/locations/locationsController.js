@@ -63,7 +63,7 @@
             //console.log($event);
             //console.log(angular.element(document.querySelector("#locationContainer .row div span")));
             var options = angular.element(document.querySelector("#locationContainer .row div span"));
-            angular.element(document.querySelector("#mapPopOver")).css({ "left": $event.pageX + "px", "top": $event.pageY + "px" });
+            angular.element(document.querySelector("#mapPopOver")).css({ "left": $event.pageX + "px", "top": $event.pageY + "px", "opacity": "0.5" });
             $scope.mapCenter.lat = location.Lattitude;
             $scope.mapCenter.lng = location.Longitude;
             $scope.mapCenter.zoom = 16;
@@ -87,12 +87,12 @@
         };
 
         $scope.zoomInMap = function () {
-            angular.element(document.querySelector("#mapPopOver")).css({ "width": "400px", "height": "400px" });
+            angular.element(document.querySelector("#mapPopOver")).css({ "width": "400px", "height": "400px", "opacity": "1" });
             angular.element(document.querySelector("leaflet")).css({ "width": "400px", "height": "400px" });
         };
 
         $scope.zoomOffMap = function () {
-            angular.element(document.querySelector("#mapPopOver")).css({ "width": "270px", "height": "270px" });
+            angular.element(document.querySelector("#mapPopOver")).css({ "width": "270px", "height": "270px", "opacity": "0.5" });
             angular.element(document.querySelector("leaflet")).css({ "width": "270px", "height": "270px" });
         };
     }

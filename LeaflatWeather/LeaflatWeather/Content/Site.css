@@ -73,6 +73,7 @@ textarea {
     box-shadow:0 0 10px rgba(0, 0, 0, .5);
     width: 270px;
     height: 270px;
+    /*opacity: 0.5;*/
 }
 #mapPopOver:after, #mapPopOver:before {
     /*right: 100%;*/
