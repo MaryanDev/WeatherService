@@ -41,7 +41,7 @@
         }
 
         function sendWeatherDataAjax(weatherData) {
-            var promise = $http.post("Home/SaveWeatherData", weatherData);
+            var promise = $http.post("SaveWeatherData", weatherData);
             return promise;
         }
 
