@@ -156,5 +156,28 @@
                     $scope.isSended = false;
                 });
         }
+
+        //$scope.findPoint = function (center) {
+        //    $scope.isSended = false;
+        //    weatherService.getDataForLocation(center.lat, center.lng)
+        //        .then(function (response) {
+        //            $scope.weatherInfo = response.data;
+        //        });
+        //    $scope.markers = {};
+        //    $scope.markers.newMarker = {
+        //        lat: center.lat,
+        //        lng: center.lng,
+        //        focus: true,
+        //        draggable: false
+        //    };
+
+        //    $scope.successMessage = "";
+        //    $scope.errorMessage = "";
+
+        //    weatherService.getSightsPoints(center.lat, center.lng)
+        //        .success(function (data) {
+        //            $scope.markerHelper(center, data);
+        //        });
+        //};
     };
 })(angular);
