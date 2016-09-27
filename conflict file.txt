@@ -1,3 +1,0 @@
-some string
-some conflict string
-added conflict from master
